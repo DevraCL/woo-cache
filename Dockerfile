@@ -1,9 +1,13 @@
 FROM ubuntu:latest
 
+RUN apt-get update && \
+    apt-get install -y curl
+
 RUN curl -s https://packagecloud.io/install/repositories/varnishcache/varnish5/script.deb.sh | bash
 
 RUN apt-get install -y varnish && \
-    apt-get -y clean
+    apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/*
 
 ADD default.vcl /etc/varnish/default.vcl
 
