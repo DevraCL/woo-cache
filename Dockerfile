@@ -1,10 +1,11 @@
 FROM ubuntu:latest
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl && \
+   
+    apt-get install -y --no-install-recommends curl ca-certificates && \
     curl -s https://packagecloud.io/install/repositories/varnishcache/varnish5/script.deb.sh | bash && \
     apt-get install -y --no-install-recommends varnish && \
-    apt-get remove -y curl && \
+    apt-get remove -y curl ca-certificates && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
 
