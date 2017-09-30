@@ -9,7 +9,7 @@ done
 set -e
 
 exec bash -c \
-  "exec varnishd -F -u varnish \
+  "exec varnishd -F \
   -f /etc/varnish/default.vcl \
   -s malloc,$CACHE_SIZE \
   $VARNISHD_PARAMS \
